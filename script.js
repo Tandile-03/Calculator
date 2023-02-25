@@ -88,15 +88,15 @@ class Calculator{
     }
     updateDisplay()
     {
-        this.currentOperandTextElem.innerText = 
-            this.getDisplayNumber(this.currentOperand)
-        if(this.operation != null){
-            this.previousOperandTextElem.innerText=
-            '${this.getDisplayNumber(previousOperand)} ${this.operation}' 
-        }
-        else{
-            this.previousOperandTextElem.innerText = ''
-        }
+        this.currentOperandTextElem.innerText = this.currentOperand
+        //     this.getDisplayNumber()
+        // if(this.operation != null){
+        //     this.previousOperandTextElem.innerText=
+        //     '${this.getDisplayNumber(previousOperand)} ${this.operation}' 
+        // }
+        // else{
+        //     this.previousOperandTextElem.innerText = ''
+        // }
        
     }
 }
