@@ -42,7 +42,7 @@ body
     grid-column :1 /-1;
     background-color: rgba(0, 0, 0, 0.75);
     display:flex;
-    align-content:flex-end;
+    align-items:flex-end;
     justify-content: space-around;
     flex-direction: column;
     padding:10px;
