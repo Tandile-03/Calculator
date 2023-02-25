@@ -12,6 +12,7 @@ class Calculator{
     }
     delete()
     {
+        this.currentOperand = this.currentOperand.toString().slice(0,-1)
 
     }
     appendNumber(number)
@@ -24,13 +25,78 @@ class Calculator{
     }
     chooseOperation(operation)
     {
+        if (this.currentOperand === '') return
+        if(this.previousOperand !== ''){
+            this.compute()
+        }
+        this.operation = operation
+        this.previousOperand = this.currentOperand
+        this.currentOperand =''
 
     }
     compute()
-    {}
+    {
+        let comptation
+        const previous = parseFloat(this.previousOperand)
+        const current = parseFloat(this.currentOperand)
+        if(isNaN(previous) || isNaN(current)) return
+
+        switch(this.operation){
+            case '+':
+                computation = previous + current
+                break
+            case '-':
+                computation = previous - current
+                break
+            case '*':
+                computation = previous * current
+                break
+            case '÷':
+                computation = previous / current
+                break
+            case '%':
+                computation = (current/100)
+                break
+            default:
+                return
+        }
+        this.currentOperand = computation
+        this.operation =undefined
+        this.previousOperand = ''
+    }
+    getDislayNumber(number){
+        const stringNumb = number.toString()
+        const intNumbers = parseFloat(stringNumb.split('.')[0])
+        const decimalNumbers = stringNumb.split('.')[1]
+
+        let intDisplay 
+        if(isNaN(intNumbers)){
+            intDisplay =''
+        }
+        else{
+            intDisplay = intNumbers.toLocaleString('en',{
+            maximumFractionDigits:0    })
+        }
+
+        if(decimalNumbers !=null){
+            return '${intDisplay}.${decimalNumbers}'
+        }
+        // const floatNum = parseFloat(number)
+        // if(isNaN(floatNum)) return ''
+        // return floatNum.toLocaleString('en')
+    }
     updateDisplay()
     {
-        this.currentOperandTextElem.innerText = this.currentOperand
+        this.currentOperandTextElem.innerText = 
+            this.getDisplayNumber(this.currentOperand)
+        if(this.operation != null){
+            this.previousOperandTextElem.innerText=
+            '${this.getDisplayNumber(previousOperand)} ${this.operation}' 
+        }
+        else{
+            this.previousOperandTextElem.innerText = ''
+        }
+       
     }
 }
 
@@ -50,4 +116,27 @@ numberButtons.forEach(button =>{
         calculator.updateDisplay()
 
     })
+})
+
+operationButtons.forEach(button =>{
+    button.addEventListener('click', ()=> {
+        calculator.chooseOperation(button.innerText)
+        calculator.updateDisplay()
+
+    })
+})
+
+equalsButtons.addEventListener('click',button=> {
+        calculator.compute(button.innerText)
+        calculator.updateDisplay()
+})
+
+allClearButtons.addEventListener('click', button=> {
+    calculator.clear()
+    calculator.updateDisplay()
+})
+
+deleteButtons.addEventListener('click', button=> {
+    calculator.delete()
+    calculator.updateDisplay()
 })
