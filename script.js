@@ -79,13 +79,11 @@ class Calculator{
         }
 
         if(decimalNumbers !=null){
-            return '${intDisplay}.${decimalNumbers}'
+            return "${intDisplay}.${decimalNumbers}"
         }else{
             return intDisplay
         }
-        // const floatNum = parseFloat(number)
-        // if(isNaN(floatNum)) return ''
-        // return floatNum.toLocaleString('en')
+
     }
     updateDisplay()
     {
