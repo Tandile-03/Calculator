@@ -6,8 +6,8 @@ class Calculator{
     }
     clear()
     {
-        this.currentOperandTextElem= ''
-        this.previousOperandTextElem=''
+        this.currentOperand= ''
+        this.previousOperand=''
         this.operation = undefined
     }
     delete()
@@ -16,7 +16,11 @@ class Calculator{
     }
     appendNumber(number)
     {
+        if (number === '.' && this.currentOperand.include ('.'))
+        return this.currentOperand = this.currentOperand.toString() + number.toString
 
+        if(number ==='%' && this.currentOperand.include ('%')) 
+        return this.currentOperand = this.currentOperand.toString() + number.toString
     }
     chooseOperation(operation)
     {
@@ -26,7 +30,7 @@ class Calculator{
     {}
     updateDisplay()
     {
-        
+        this.currentOperandTextElem.innerText = this.currentOperand
     }
 }
 
