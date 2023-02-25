@@ -43,8 +43,8 @@ body
     background-color: rgba(0, 0, 0, 0.75);
     display:flex;
     align-content:flex-end;
-    justify-content: space-around;
-    flex-direction:column;
+    justify-content: space-btween;
+    flex-direction: column;
     padding:10px;
     word-wrap:break-all;
 }
