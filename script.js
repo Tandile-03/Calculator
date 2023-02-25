@@ -19,7 +19,7 @@ class Calculator{
     appendNumber(number)
     {
         //this.currentOperand = number
-        if (number === '.' && this.currentOperand.include ('.')) return
+        if (number === '.' && this.currentOperand.includes('.')) return
         this.currentOperand = this.currentOperand.toString() + number.toString
 
         // if(number ==='%' && this.currentOperand.include ('%')) 
