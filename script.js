@@ -19,8 +19,8 @@ class Calculator{
     appendNumber(number)
     {
         //this.currentOperand = number
-        if (number === '.' && this.currentOperand.include ('.'))
-        return this.currentOperand = this.currentOperand.toString() + number.toString
+        if (number === '.' && this.currentOperand.include ('.')) return
+        this.currentOperand = this.currentOperand.toString() + number.toString
 
         // if(number ==='%' && this.currentOperand.include ('%')) 
         // return this.currentOperand = this.currentOperand.toString() + number.toString
