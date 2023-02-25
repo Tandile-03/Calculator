@@ -18,15 +18,13 @@ class Calculator{
     }
     appendNumber(number)
     {
-        //this.currentOperand = number
+      
         if (number === '.' && this.currentOperand.includes('.')) return
         this.currentOperand = this.currentOperand.toString() + number.toString()
-
-        // if(number ==='%' && this.currentOperand.include ('%')) 
-        // return this.currentOperand = this.currentOperand.toString() + number.toString
     }
     chooseOperation(operation)
     {
+        this.operation = operation
         if (this.currentOperand === '') return
         if(this.previousOperand !== ''){
             this.compute()
@@ -38,7 +36,7 @@ class Calculator{
     }
     compute()
     {
-        let comptation
+        let computation
         const previous = parseFloat(this.previousOperand)
         const current = parseFloat(this.currentOperand)
         if(isNaN(previous) || isNaN(current)) return
@@ -57,19 +55,19 @@ class Calculator{
                 computation = previous / current
                 break
             case '%':
-                computation = (current/100)
+                computation = (current)/100
                 break
             default:
                 return
         }
         this.currentOperand = computation
-        this.operation =undefined
+        this.operation = undefined
         this.previousOperand = ''
     }
-    getDislayNumber(number){
+    getDisplayNumber(number){
         const stringNumb = number.toString()
-        const intNumbers = parseFloat(stringNumb.split('.')[0])
-        const decimalNumbers = stringNumb.split('.')[1]
+        const intNumbers = parseFloat(stringNumb.split('.')[0]) //turns number into array
+        const decimalNumbers = stringNumb.split('.')[1]         //numbers after the decimal place
 
         let intDisplay 
         if(isNaN(intNumbers)){
@@ -82,6 +80,8 @@ class Calculator{
 
         if(decimalNumbers !=null){
             return '${intDisplay}.${decimalNumbers}'
+        }else{
+            return intDisplay
         }
         // const floatNum = parseFloat(number)
         // if(isNaN(floatNum)) return ''
@@ -89,15 +89,15 @@ class Calculator{
     }
     updateDisplay()
     {
-        this.currentOperandTextElem.innerText = this.currentOperand
-        //     this.getDisplayNumber()
-        // if(this.operation != null){
-        //     this.previousOperandTextElem.innerText=
-        //     '${this.getDisplayNumber(previousOperand)} ${this.operation}' 
-        // }
-        // else{
-        //     this.previousOperandTextElem.innerText = ''
-        // }
+        this.currentOperandTextElem.innerText = 
+            this.getDisplayNumber(this.currentOperand)
+        if(this.operation != null){
+            this.previousOperandTextElem.innerText=
+            '${this.getDisplayNumber(previousOperand)} ${this.operation}' 
+        }
+        else{
+            this.previousOperandTextElem.innerText = ''
+        }
        
     }
 }
@@ -138,7 +138,7 @@ allClearButton.addEventListener('click', button=> {
     calculator.updateDisplay()
 })
 
-deleteButtons.addEventListener('click', button=> {
+deleteButton.addEventListener('click', button=> {
     calculator.delete()
     calculator.updateDisplay()
 })
