@@ -3,7 +3,7 @@ class Calculator{
     {
         this.previousOperandTextElem = previousOperandTextElem
         this.currentOperandTextElem = currentOperandTextElem
-        this.clear( )
+        this.clear()
     }
     clear()
     {
@@ -18,7 +18,6 @@ class Calculator{
     }
     appendNumber(number)
     {
-      
         if (number === '.' && this.currentOperand.includes('.')) return
         this.currentOperand = this.currentOperand.toString() + number.toString()
     }
@@ -87,15 +86,17 @@ class Calculator{
     }
     updateDisplay()
     {
-        this.currentOperandTextElem.innerText = 
-            this.getDisplayNumber(this.currentOperand)
-        if(this.operation != null){
-            this.previousOperandTextElem.innerText=
-            `${this.getDisplayNumber(previousOperand)} ${this.operation}`
-        }
-        else{
-            this.previousOperandTextElem.innerText = ''
-        }
+        this.currentOperandTextElem.innerText = this.currentOperand
+        this.previousOperandTextElem.innerText = this.previousOperand
+        // this.currentOperandTextElem.innerText = 
+        //     this.getDisplayNumber(this.currentOperand)
+        // if(this.operation != null){
+        //     this.previousOperandTextElem.innerText=
+        //     `${this.getDisplayNumber(previousOperand)} ${this.operation}`
+        // }
+        // else{
+        //     this.previousOperandTextElem.innerText = ''
+        // }
        
     }
 }
