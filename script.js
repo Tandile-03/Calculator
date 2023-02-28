@@ -79,7 +79,7 @@ class Calculator{
         }
 
         if(decimalNumbers !=null){
-            return "${intDisplay}.${decimalNumbers}"
+            return `${intDisplay}.${decimalNumbers}`
         }else{
             return intDisplay
         }
@@ -91,7 +91,7 @@ class Calculator{
             this.getDisplayNumber(this.currentOperand)
         if(this.operation != null){
             this.previousOperandTextElem.innerText=
-            '${this.getDisplayNumber(previousOperand)} ${this.operation}' 
+            `${this.getDisplayNumber(previousOperand)} ${this.operation}`
         }
         else{
             this.previousOperandTextElem.innerText = ''
