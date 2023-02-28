@@ -63,6 +63,7 @@ class Calculator{
         this.operation = undefined
         this.previousOperand = ''
     }
+
     getDisplayNumber(number){
         const stringNumb = number.toString()
         const intNumbers = parseFloat(stringNumb.split('.')[0]) //turns number into array
@@ -87,13 +88,13 @@ class Calculator{
     updateDisplay()
     {
         this.currentOperandTextElem.innerText = this.currentOperand
-        this.previousOperandTextElem.innerText = this.previousOperand
+        
         // this.currentOperandTextElem.innerText = 
         //     this.getDisplayNumber(this.currentOperand)
-        // if(this.operation != null){
-        //     this.previousOperandTextElem.innerText=
-        //     `${this.getDisplayNumber(previousOperand)} ${this.operation}`
-        // }
+        if(this.operation != null){
+            this.previousOperandTextElem.innerText = 
+            `${this.previousOperand} ${this.operation}`
+         }
         // else{
         //     this.previousOperandTextElem.innerText = ''
         // }
