@@ -87,17 +87,15 @@ class Calculator{
     }
     updateDisplay()
     {
-        this.currentOperandTextElem.innerText = this.currentOperand
-        
-        // this.currentOperandTextElem.innerText = 
-        //     this.getDisplayNumber(this.currentOperand)
+        this.currentOperandTextElem.innerText = 
+            this.getDisplayNumber(this.currentOperand)
         if(this.operation != null){
             this.previousOperandTextElem.innerText = 
-            `${this.previousOperand} ${this.operation}`
+            `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
          }
-        // else{
-        //     this.previousOperandTextElem.innerText = ''
-        // }
+        else{
+            this.previousOperandTextElem.innerText = ''
+        }
        
     }
 }
